@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbyxn6fs61ajs"]
+
+[ext_resource type="Script" path="res://Object/mc.gd" id="1_v3wh1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="mc" type="Sprite2D" parent="."]
+script = ExtResource("1_v3wh1")
