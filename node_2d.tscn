@@ -11,5 +11,20 @@ texture = ExtResource("1_j18hy")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(667, 280)
+<<<<<<< Updated upstream
 scale = Vector2(0.765625, 4.14844)
 texture = ExtResource("1_j18hy")
+=======
+scale = Vector2(0.765625, 4.14844)
+texture = ExtResource("1_j18hy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(-811.102, 103.412)
+scale = Vector2(0.765625, 4.14844)
+texture = ExtResource("1_j18hy")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1061, 297)
+scale = Vector2(0.765625, 4.14844)
+texture = ExtResource("1_j18hy")
+>>>>>>> Stashed changes
