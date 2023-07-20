@@ -29,8 +29,28 @@ position = Vector2(112, 298)
 scale = Vector2(0.815934, 0.943947)
 texture = ExtResource("1_j18hy")
 
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(206, 125)
+scale = Vector2(0.815934, 0.943947)
+texture = ExtResource("1_j18hy")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(198, 449)
+scale = Vector2(0.815934, 0.943947)
+texture = ExtResource("1_j18hy")
+
 [node name="Sprite2D12" type="Sprite2D" parent="."]
 position = Vector2(1012, 290)
+scale = Vector2(0.815934, 0.943947)
+texture = ExtResource("1_j18hy")
+
+[node name="Sprite2D15" type="Sprite2D" parent="."]
+position = Vector2(933, 141)
+scale = Vector2(0.815934, 0.943947)
+texture = ExtResource("1_j18hy")
+
+[node name="Sprite2D16" type="Sprite2D" parent="."]
+position = Vector2(955, 441)
 scale = Vector2(0.815934, 0.943947)
 texture = ExtResource("1_j18hy")
 
