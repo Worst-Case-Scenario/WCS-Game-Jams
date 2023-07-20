@@ -45,7 +45,7 @@ func _process(delta):
 	if modulate.a <= -1:
 		match pos:
 			0: 
-				get_tree().change_scene_to_file("res://main.tscn")
+				get_tree().change_scene_to_file("res://Scene/Main.tscn")
 			1:
 				pass
 			2:
