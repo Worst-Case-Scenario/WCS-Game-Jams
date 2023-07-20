@@ -5,34 +5,21 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(665.5, 174.5)
+position = Vector2(578, 301)
 scale = Vector2(4.66406, 0.945313)
 texture = ExtResource("1_j18hy")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(667, 280)
-<<<<<<< Updated upstream
-scale = Vector2(0.765625, 4.14844)
-texture = ExtResource("1_j18hy")
-=======
-scale = Vector2(0.765625, 4.14844)
-texture = ExtResource("1_j18hy")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D2"]
-position = Vector2(-811.102, 103.412)
+position = Vector2(573, 309)
 scale = Vector2(0.765625, 4.14844)
 texture = ExtResource("1_j18hy")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(1061, 297)
-scale = Vector2(0.765625, 4.14844)
-texture = ExtResource("1_j18hy")
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(1039, 313)
+position = Vector2(178, 313)
 scale = Vector2(1.46686, 4.11408)
 texture = ExtResource("1_j18hy")
->>>>>>> Stashed changes
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(1025, 323)
+scale = Vector2(1.46686, 4.11408)
+texture = ExtResource("1_j18hy")
