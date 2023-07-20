@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqmakkfrogr24"]
+
+[ext_resource type="Script" path="res://Scripts/Splashscreen.gd" id="1_0obxp"]
+[ext_resource type="Texture2D" uid="uid://o61iw4o4gsjd" path="res://Sprites/wordart (1).png" id="2_jy1ft"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(449, 294)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Splashscreen" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+script = ExtResource("1_0obxp")
+
+[node name="logo" type="VBoxContainer" parent="Control/MarginContainer/Splashscreen"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/Splashscreen/logo"]
+position = Vector2(143, 24)
+scale = Vector2(0.243509, 0.243509)
+texture = ExtResource("2_jy1ft")
+
+[node name="disclaimer" type="VBoxContainer" parent="Control/MarginContainer/Splashscreen"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Splashscreen/disclaimer"]
+layout_mode = 2
+text = "AHAHSHFHASDFHASHDFHASDFHS"
