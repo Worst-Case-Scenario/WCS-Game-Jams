@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqmakkfrogr24"]
+[gd_scene load_steps=3 format=3 uid="uid://d0h6fgqhkdn76"]
 
 [ext_resource type="Script" path="res://Scripts/Splashscreen.gd" id="1_0obxp"]
 [ext_resource type="Texture2D" uid="uid://o61iw4o4gsjd" path="res://Sprites/wordart (1).png" id="2_jy1ft"]

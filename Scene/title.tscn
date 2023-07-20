@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://0bga7e6esjo7"]
+
+[ext_resource type="Script" path="res://Object/mc.gd" id="1_eu8ok"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen.gd" id="2_kuj20"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="mc" type="Sprite2D" parent="."]
+script = ExtResource("1_eu8ok")
+
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_kuj20")
+
+[node name="Mulai" type="Label" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 499.0
+offset_right = 279.0
+offset_bottom = 531.0
+theme_override_font_sizes/font_size = 32
+text = "Mulai"
+
+[node name="Mulai2" type="Label" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 220.0
+offset_right = 872.0
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 72
+text = "Nama Game Disini"
+
+[node name="Pengaturan" type="Label" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 499.0
+offset_right = 556.0
+offset_bottom = 531.0
+theme_override_font_sizes/font_size = 32
+text = "Pengaturan"
+
+[node name="Keluar" type="Label" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 791.0
+offset_top = 497.0
+offset_right = 844.0
+offset_bottom = 529.0
+theme_override_font_sizes/font_size = 32
+text = "Keluar"
