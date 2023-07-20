@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbyxn6fs61ajs"]
 
-[ext_resource type="PackedScene" path="res://Scene/player.tscn" id="1_r530m"]
+[ext_resource type="PackedScene" uid="uid://coo8q06c1ufpp" path="res://Scene/player.tscn" id="1_r530m"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_kfj5v"]
 size = Vector2(1000, 100)
