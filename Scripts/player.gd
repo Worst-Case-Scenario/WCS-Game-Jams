@@ -8,7 +8,7 @@ var current_jump = 0
 var max_jump = 2
 @onready var animSprite = $AnimatedSprite2D
 var is_moving_left = false
-const bulletPath = preload("res://Objects/bullet.tscn")
+const bulletPath = preload("res://Objects/mcbullet.tscn")
 
 func _physics_process(delta):
 	if !is_on_floor():
@@ -53,6 +53,7 @@ func shoot():
 	var bullet = bulletPath.instantiate()
 	get_parent().add_child(bullet)
 	bullet.position = $Marker2D.global_position
+	bullet.look_at(get_global_mouse_position())
 	bullet.velocity = get_global_mouse_position() - bullet.position
 	
 	

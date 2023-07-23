@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtxcmeh683vtr"]
+[gd_scene load_steps=10 format=3 uid="uid://dtxcmeh683vtr"]
 
 [ext_resource type="Texture2D" uid="uid://djl0p6e6j8f7f" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-bg.png" id="3_jw44d"]
 [ext_resource type="Texture2D" uid="uid://b8ml5dpdvtq8s" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-close-trees.png" id="4_a2d0e"]
 [ext_resource type="Texture2D" uid="uid://4vdnihkf0rvd" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-far-trees.png" id="5_v77po"]
+[ext_resource type="PackedScene" uid="uid://dg8kj3ylii0u8" path="res://Objects/gremory.tscn" id="6_p6lkn"]
 [ext_resource type="Texture2D" uid="uid://b0ftvrkrvf6tu" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-mid-trees.png" id="6_qmw46"]
 [ext_resource type="PackedScene" uid="uid://coo8q06c1ufpp" path="res://Scene/player.tscn" id="8_2ppii"]
 [ext_resource type="Texture2D" uid="uid://bvhnrwnn3nm15" path="res://Sprites/Tiles/Tiles.png" id="9_2n2ec"]
@@ -323,7 +324,10 @@ position = Vector2(296, 96)
 texture = ExtResource("6_qmw46")
 
 [node name="Player" parent="." instance=ExtResource("8_2ppii")]
-position = Vector2(32, 160)
+position = Vector2(524, 153)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_p6lkn")]
+position = Vector2(554, 37)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8fbnm")

@@ -1,0 +1,126 @@
+[gd_scene load_steps=11 format=3 uid="uid://dg8kj3ylii0u8"]
+
+[ext_resource type="Texture2D" uid="uid://benx16kv6xpy3" path="res://Sprites/sidtalk_Gremory-Sheet.png" id="1_qfpp5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bx7y"]
+atlas = ExtResource("1_qfpp5")
+region = Rect2(1500, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1l5w"]
+atlas = ExtResource("1_qfpp5")
+region = Rect2(1650, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uffya"]
+atlas = ExtResource("1_qfpp5")
+region = Rect2(1800, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6huvx"]
+atlas = ExtResource("1_qfpp5")
+region = Rect2(1950, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptsrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bx7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1l5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uffya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6huvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6huvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uffya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bx7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bx7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bx7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bx7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bx7y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1jbc"]
+size = Vector2(23, 47)
+
+[sub_resource type="Animation" id="Animation_vo3i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemyanim:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+
+[sub_resource type="Animation" id="Animation_pl7ci"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hit"
+}, {
+"args": [],
+"method": &"end_of_hit"
+}, {
+"args": [],
+"method": &"start_walk"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pa3ux"]
+_data = {
+"RESET": SubResource("Animation_vo3i4"),
+"attack": SubResource("Animation_pl7ci")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(186, 104)
+
+[node name="enemyanim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.363333, 0.363333)
+sprite_frames = SubResource("SpriteFrames_ptsrp")
+animation = &"idle"
+frame_progress = 0.548564
+speed_scale = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_u1jbc")
+
+[node name="enemyanimplayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pa3ux")
+}

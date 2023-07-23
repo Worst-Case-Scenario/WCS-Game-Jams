@@ -84,7 +84,7 @@ position = Vector2(1.5, -0.5)
 scale = Vector2(1.59375, 0.71875)
 sprite_frames = SubResource("SpriteFrames_gem6u")
 animation = &"flying"
-frame_progress = 0.382872
+frame_progress = 0.303123
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.00003, -2)

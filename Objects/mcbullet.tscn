@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5jcc5cqtdd18"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_o22op"]
+[ext_resource type="Texture2D" uid="uid://dcy40yk2sykwf" path="res://Sprites/mcbullet.png" id="2_ncfwb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6gck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ncfwb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqf4o"]
+radius = 8.51469
+
+[sub_resource type="Animation" id="Animation_vo3i4"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_pl7ci"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hit"
+}, {
+"args": [],
+"method": &"end_of_hit"
+}, {
+"args": [],
+"method": &"start_walk"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pa3ux"]
+_data = {
+"RESET": SubResource("Animation_vo3i4"),
+"attack": SubResource("Animation_pl7ci")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(42, 16)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_o22op")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -0.5)
+scale = Vector2(0.53125, 0.53125)
+sprite_frames = SubResource("SpriteFrames_o6gck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("CircleShape2D_fqf4o")
+
+[node name="enemyanimplayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pa3ux")
+}
