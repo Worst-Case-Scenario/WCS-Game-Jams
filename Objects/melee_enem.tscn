@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bg81boq7epx4p"]
+[gd_scene load_steps=28 format=3 uid="uid://bg81boq7epx4p"]
 
 [ext_resource type="Script" path="res://Scripts/enemy1.gd" id="1_va2so"]
 [ext_resource type="Texture2D" uid="uid://d8p84p6qcnli" path="res://Sprites/AnimationSheet_Character.png" id="2_4sfjj"]
@@ -159,7 +159,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_pl7ci"]
-resource_name = "attack"
+resource_name = "idle"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -167,24 +167,141 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.7, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"hit"
-}, {
-"args": [],
-"method": &"end_of_hit"
-}, {
-"args": [],
-"method": &"start_walk"
+"method": &"end_idle"
 }]
 }
+
+[sub_resource type="Animation" id="Animation_54irk"]
+resource_name = "phase1"
+length = 3.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}, {
+"args": [],
+"method": &"phase1shoot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sksya"]
+resource_name = "phase2"
+
+[sub_resource type="Animation" id="Animation_5ykvf"]
+resource_name = "phase3"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pa3ux"]
 _data = {
 "RESET": SubResource("Animation_vo3i4"),
-"attack": SubResource("Animation_pl7ci")
+"idle": SubResource("Animation_pl7ci"),
+"phase1": SubResource("Animation_54irk"),
+"phase2": SubResource("Animation_sksya"),
+"phase3": SubResource("Animation_5ykvf")
 }
 
 [node name="melee_enem" type="CharacterBody2D"]
