@@ -29,7 +29,7 @@ func hit():
 	var bullet = bulletPath.instantiate()
 	get_parent().add_child(bullet)
 	bullet.position = $Marker2D.global_position
-	bullet.velocitys = get_node("/root/World/station_enem").global_position.direction_to(get_node("/root/World/Player").global_position)
+	bullet.velocity = get_node("/root/World/station_enem").global_position.direction_to(get_node("/root/World/Player").global_position)
 	
 func end_of_hit():
 	print("pings")

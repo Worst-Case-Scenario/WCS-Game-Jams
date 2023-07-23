@@ -23,7 +23,7 @@ func _physics_process(delta):
 			current_jump += 1
 		
 	
-	if Input.is_action_just_pressed("accept"):
+	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	var horizontal_direction = Input.get_axis("left","right")
 	velocity.x = speed * horizontal_direction
@@ -53,6 +53,6 @@ func shoot():
 	var bullet = bulletPath.instantiate()
 	get_parent().add_child(bullet)
 	bullet.position = $Marker2D.global_position
-	bullet.velocitys = Vector2(1,0) if moving == "right" else Vector2(-1,0)
+	bullet.velocity = get_global_mouse_position() - bullet.position
 	
 	

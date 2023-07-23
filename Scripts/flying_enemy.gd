@@ -21,6 +21,8 @@ func _physics_process(delta):
 	if $PlayerDetector.get_overlapping_bodies() != []:
 		$enemyanimplayer.play("attack")
 		$enemyanim.play("attack")
+	if $enemyanimplayer.current_animation != "attack":
+		rotation_degrees = 180 if is_moving_left else 0
 	move_character()
 	detect_turn_around()
 	
@@ -43,6 +45,6 @@ func start_walk():
 
 
 func _on_player_detector_body_exited(body):
-	
-	rotation_degrees = 180 if is_moving_left else 0
+	if $enemyanimplayer.current_animation != "attack":
+		rotation_degrees = 180 if is_moving_left else 0
 	pass # Replace with function body.
