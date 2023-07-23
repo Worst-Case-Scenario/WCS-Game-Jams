@@ -33,7 +33,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4t1o"]
-size = Vector2(32, 22)
+size = Vector2(32, 14)
 
 [sub_resource type="Animation" id="Animation_vo3i4"]
 length = 0.001
@@ -84,10 +84,10 @@ position = Vector2(1.5, -0.5)
 scale = Vector2(1.59375, 0.71875)
 sprite_frames = SubResource("SpriteFrames_gem6u")
 animation = &"flying"
-frame_progress = 0.928547
+frame_progress = 0.382872
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.00003, 2)
+position = Vector2(2.00003, -2)
 shape = SubResource("RectangleShape2D_k4t1o")
 
 [node name="enemyanimplayer" type="AnimationPlayer" parent="."]
@@ -96,8 +96,8 @@ libraries = {
 }
 
 [node name="WallDetector" type="RayCast2D" parent="."]
-position = Vector2(11, 2)
-target_position = Vector2(8, 0)
+position = Vector2(18, -10)
+target_position = Vector2(0, 20)
 collision_mask = 2
 
 [node name="PlayerDetector" type="Area2D" parent="."]
