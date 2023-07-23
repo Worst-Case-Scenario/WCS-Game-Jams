@@ -9,11 +9,17 @@ var is_moving_left = false
 const bulletPath = preload("res://Objects/bullet.tscn")
 
 func _physics_process(delta):
-	if !is_on_floor() && velocity.y < 1000:
-		velocity.y += gravity
+	if !is_on_floor():
+		if velocity.y < 1000:
+			velocity.y += gravity
+	else:
+		current_jump = 0
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = -jump_force 
+	if Input.is_action_just_pressed("jump"): and is_on_floor():
+		if current_jump < max_jump:
+			velocity.y = -jump_force
+			current_jump += 1
+		
 	
 	if Input.is_action_just_pressed("accept"):
 		shoot()
@@ -23,7 +29,11 @@ func _physics_process(delta):
 	
 	if velocity.y < 0:
 		animSprite.play("jump")
-	elif velocity.x != 0:
+	elif velocity.x < 0:
+		animSprite.flip_h = true
+		animSprite.play("moving")
+	elif velocity.x > 0:
+		animSprite.flip_h = false
 		animSprite.play("moving")
 	else:
 		animSprite.play("idle")
@@ -44,6 +54,4 @@ func shoot():
 	bullet.position = $Marker2D.global_position
 	bullet.velocitys = Vector2(1,0) if moving == "right" else Vector2(-1,0)
 	
-	
-
 	
