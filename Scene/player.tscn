@@ -163,4 +163,4 @@ shape = SubResource("RectangleShape2D_i3of5")
 position = Vector2(0, -6)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(11, -2)
+position = Vector2(12, 0)
