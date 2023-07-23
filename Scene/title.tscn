@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://0bga7e6esjo7"]
+[gd_scene load_steps=5 format=3 uid="uid://0bga7e6esjo7"]
 
 [ext_resource type="Script" path="res://Object/mc.gd" id="1_eu8ok"]
 [ext_resource type="Script" path="res://Scripts/TitleScreen.gd" id="2_kuj20"]
+[ext_resource type="AudioStream" uid="uid://nptq6iomxs64" path="res://y2mate.com - The Grand Affair  Coupe  NO COPYRIGHT 8bit Music.mp3" id="3_nm6or"]
+[ext_resource type="Texture2D" uid="uid://lry22eqaejt" path="res://logo gaes.png" id="4_3weju"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,6 +15,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.301109, 0.301109)
 script = ExtResource("2_kuj20")
 
 [node name="Mulai" type="Label" parent="TitleScreen"]
@@ -24,14 +27,10 @@ offset_bottom = 531.0
 theme_override_font_sizes/font_size = 32
 text = "Mulai"
 
-[node name="Mulai2" type="Label" parent="TitleScreen"]
-layout_mode = 0
-offset_left = 227.0
-offset_top = 220.0
-offset_right = 872.0
-offset_bottom = 322.0
-theme_override_font_sizes/font_size = 72
-text = "Nama Game Disini"
+[node name="LogoGaes" type="Sprite2D" parent="TitleScreen"]
+position = Vector2(561.259, 431.737)
+scale = Vector2(0.884003, 0.884003)
+texture = ExtResource("4_3weju")
 
 [node name="Pengaturan" type="Label" parent="TitleScreen"]
 layout_mode = 0
@@ -40,7 +39,7 @@ offset_top = 499.0
 offset_right = 556.0
 offset_bottom = 531.0
 theme_override_font_sizes/font_size = 32
-text = "Pengaturan"
+text = " "
 
 [node name="Keluar" type="Label" parent="TitleScreen"]
 layout_mode = 0
@@ -50,3 +49,7 @@ offset_right = 844.0
 offset_bottom = 529.0
 theme_override_font_sizes/font_size = 32
 text = "Keluar"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nm6or")
+autoplay = true

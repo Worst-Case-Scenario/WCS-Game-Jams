@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cc0lw4q22rd2n"]
 
 [ext_resource type="PackedScene" uid="uid://coo8q06c1ufpp" path="res://Scene/player.tscn" id="1_x18dr"]
-[ext_resource type="PackedScene" uid="uid://dtxi46137rxyk" path="res://Objects/melee_enem.tscn" id="2_ekv3d"]
+[ext_resource type="PackedScene" uid="uid://bg81boq7epx4p" path="res://Objects/melee_enem.tscn" id="2_ekv3d"]
 [ext_resource type="PackedScene" uid="uid://cu8kx62d4h0n2" path="res://Objects/flying_enemy.tscn" id="4_wlqs5"]
 [ext_resource type="PackedScene" uid="uid://bypueqemr7hty" path="res://Objects/station_enem.tscn" id="5_bcjnc"]
 

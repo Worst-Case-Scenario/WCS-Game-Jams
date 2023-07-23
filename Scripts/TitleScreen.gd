@@ -1,7 +1,7 @@
 extends Control
 
 var pos = 0
-var menu_length = 3
+var menu_length = 2
 var fadeOut = false
 
 # Called when the node enters the scene tree for the first time.
@@ -12,9 +12,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var down = int(Input.is_action_just_pressed("down"))
-	var up = int(Input.is_action_just_pressed("up"))
-	print(int(Input.is_action_just_pressed("up")))
+	var down = int(Input.is_action_just_pressed("left"))
+	var up = int(Input.is_action_just_pressed("right"))
+	print(modulate.a)
 	if not fadeOut:
 		pos += down - up
 	if pos >= menu_length:
@@ -29,11 +29,8 @@ func _process(delta):
 			$Keluar.set("theme_override_colors/font_color", Color(1,1,1))
 			$Pengaturan.set("theme_override_colors/font_color", Color(1,1,1))
 
+		
 		1:
-			$Mulai.set("theme_override_colors/font_color", Color(1,1,1))
-			$Pengaturan.set("theme_override_colors/font_color", Color(1, 0, 0))
-			$Keluar.set("theme_override_colors/font_color", Color(1,1,1))
-		2:
 			$Mulai.set("theme_override_colors/font_color", Color(1,1,1))
 			$Keluar.set("theme_override_colors/font_color", Color(1, 0, 0))
 			$Pengaturan.set("theme_override_colors/font_color", Color(1,1,1))
@@ -46,9 +43,9 @@ func _process(delta):
 		match pos:
 			0: 
 				get_tree().change_scene_to_file("res://Scene/Main.tscn")
-			1:
-				pass
 			2:
+				pass
+			1:
 				get_tree().quit()
 
 	pass

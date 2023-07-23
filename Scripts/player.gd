@@ -25,6 +25,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+		$AudioStreamPlayer2D.play()
 	var horizontal_direction = Input.get_axis("left","right")
 	velocity.x = speed * horizontal_direction
 	move_and_slide()

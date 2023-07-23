@@ -9,8 +9,11 @@ position = Vector2(449, 294)
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -354.0
+offset_top = -211.0
+offset_right = -314.0
+offset_bottom = -171.0
+scale = Vector2(0.292096, 0.314563)
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 0
@@ -25,7 +28,7 @@ script = ExtResource("1_0obxp")
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/Splashscreen/logo"]
-position = Vector2(143, 24)
+position = Vector2(287.577, 15.8953)
 scale = Vector2(0.243509, 0.243509)
 texture = ExtResource("2_jy1ft")
 
@@ -34,4 +37,5 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/Splashscreen/disclaimer"]
 layout_mode = 2
-text = "AHAHSHFHASDFHASHDFHASDFHS"
+text = "Game ini hanya dipergunakan untuk keperluan IDI Game Jam"
+horizontal_alignment = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dtxi46137rxyk"]
+[gd_scene load_steps=28 format=3 uid="uid://bg81boq7epx4p"]
 
 [ext_resource type="Script" path="res://Scripts/enemy1.gd" id="1_va2so"]
 [ext_resource type="Texture2D" uid="uid://d8p84p6qcnli" path="res://Sprites/AnimationSheet_Character.png" id="2_4sfjj"]
@@ -178,6 +178,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_54irk"]
 resource_name = "phase1"
 length = 3.5
+loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
