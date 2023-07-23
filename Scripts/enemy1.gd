@@ -26,11 +26,11 @@ func _physics_process(delta):
 		
 		return
 	if $PlayerDetector.is_colliding():
-		print("hit2")
+		
 		$enemyanimplayer.play("attack")
 		$enemyanim.play("idle")
 	if $AttackDetector.is_colliding():
-		
+		print("hit2")
 		get_tree().reload_current_scene()
 	move_character()
 	detect_turn_around()

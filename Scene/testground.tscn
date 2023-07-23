@@ -154,6 +154,32 @@ size = Vector2(32, 22)
 
 [sub_resource type="Animation" id="Animation_vo3i4"]
 length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../flying_enemy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("enemyanim:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
 
 [sub_resource type="Animation" id="Animation_pl7ci"]
 resource_name = "attack"
@@ -308,7 +334,7 @@ script = ExtResource("2_rpdp1")
 position = Vector2(1.5, -0.5)
 scale = Vector2(1.59375, 0.71875)
 sprite_frames = SubResource("SpriteFrames_em0as")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="melee_enem"]
@@ -335,8 +361,8 @@ target_position = Vector2(-16, 0)
 
 [node name="station_enem" type="CharacterBody2D" parent="."]
 position = Vector2(408, 100)
-collision_layer = 2
-collision_mask = 4
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("4_55442")
 
 [node name="enemyanim" type="AnimatedSprite2D" parent="station_enem"]
@@ -383,6 +409,7 @@ position = Vector2(7, 5)
 shape = SubResource("RectangleShape2D_5il6k")
 
 [node name="enemyanimplayer" type="AnimationPlayer" parent="flying_enemy"]
+root_node = NodePath("../enemyanim")
 libraries = {
 "": SubResource("AnimationLibrary_pa3ux")
 }
@@ -399,5 +426,6 @@ shape = SubResource("CircleShape2D_cr6q3")
 [node name="Marker2D" type="Marker2D" parent="flying_enemy"]
 position = Vector2(-11, 2)
 
+[connection signal="draw" from="Player" to="flying_enemy" method="_on_player_draw"]
 [connection signal="body_entered" from="station_enem/PlayerDetector" to="station_enem" method="_on_player_detector_body_entered"]
 [connection signal="body_entered" from="flying_enemy/PlayerDetector" to="flying_enemy" method="_on_player_detector_body_entered"]
