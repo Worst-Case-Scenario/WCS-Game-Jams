@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var gravity = 30
 @export var jump_force = 300
 var moving = "right"
+var current_jump = 0
+var max_jump = 2
 @onready var animSprite = $AnimatedSprite2D
 var is_moving_left = false
 const bulletPath = preload("res://Objects/bullet.tscn")
@@ -15,7 +17,7 @@ func _physics_process(delta):
 	else:
 		current_jump = 0
 	
-	if Input.is_action_just_pressed("jump"): and is_on_floor():
+	if Input.is_action_just_pressed("jump"):
 		if current_jump < max_jump:
 			velocity.y = -jump_force
 			current_jump += 1
@@ -29,12 +31,6 @@ func _physics_process(delta):
 	
 	if velocity.y < 0:
 		animSprite.play("jump")
-	elif velocity.x < 0:
-		animSprite.flip_h = true
-		animSprite.play("moving")
-	elif velocity.x > 0:
-		animSprite.flip_h = false
-		animSprite.play("moving")
 	else:
 		animSprite.play("idle")
 	if Input.is_action_pressed("left") and !is_moving_left:
