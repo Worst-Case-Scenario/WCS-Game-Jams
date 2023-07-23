@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cbyxn6fs61ajs"]
 
-[ext_resource type="PackedScene" uid="uid://bg81boq7epx4p" path="res://Objects/melee_enem.tscn" id="1_mc0ao"]
+[ext_resource type="PackedScene" uid="uid://dtxi46137rxyk" path="res://Objects/melee_enem.tscn" id="1_mc0ao"]
 [ext_resource type="PackedScene" uid="uid://coo8q06c1ufpp" path="res://Scene/player.tscn" id="1_r530m"]
 [ext_resource type="Texture2D" uid="uid://djl0p6e6j8f7f" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-bg.png" id="1_xywdn"]
 [ext_resource type="Texture2D" uid="uid://bvhnrwnn3nm15" path="res://Sprites/Tiles/Tiles.png" id="2_tit6s"]
@@ -335,6 +335,7 @@ position = Vector2(365, 151)
 
 [node name="Player" parent="." instance=ExtResource("1_r530m")]
 position = Vector2(32, 160)
+scale = Vector2(1.5, 1.5)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8fbnm")

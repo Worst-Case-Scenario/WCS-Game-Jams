@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dg8kj3ylii0u8"]
+[gd_scene load_steps=25 format=3 uid="uid://bp3pckbup6by6"]
 
 [ext_resource type="Texture2D" uid="uid://benx16kv6xpy3" path="res://Sprites/sidtalk_Gremory-Sheet.png" id="1_qfpp5"]
 [ext_resource type="Script" path="res://Scripts/gremory.gd" id="1_wfd1y"]
