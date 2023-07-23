@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://cu8kx62d4h0n2"]
+
+[ext_resource type="Script" path="res://Scripts/flying_enemy.gd" id="1_veeh5"]
+[ext_resource type="Texture2D" uid="uid://b6ahy1saclqi5" path="res://Sprites/32x32-bat-sprite.png" id="2_j22ie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h2fm"]
+atlas = ExtResource("2_j22ie")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxnjb"]
+atlas = ExtResource("2_j22ie")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h1b2"]
+atlas = ExtResource("2_j22ie")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gem6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h2fm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxnjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h1b2")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4t1o"]
+size = Vector2(32, 22)
+
+[sub_resource type="Animation" id="Animation_vo3i4"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_pl7ci"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"facing"
+}, {
+"args": [],
+"method": &"hit"
+}, {
+"args": [],
+"method": &"end_of_hit"
+}, {
+"args": [],
+"method": &"start_walk"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pa3ux"]
+_data = {
+"RESET": SubResource("Animation_vo3i4"),
+"attack": SubResource("Animation_pl7ci")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tffgq"]
+radius = 111.018
+
+[node name="flying_enemy" type="CharacterBody2D"]
+position = Vector2(159, 78)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_veeh5")
+
+[node name="enemyanim" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.5, -0.5)
+scale = Vector2(1.59375, 0.71875)
+sprite_frames = SubResource("SpriteFrames_gem6u")
+animation = &"flying"
+frame_progress = 0.682905
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.00003, 2)
+shape = SubResource("RectangleShape2D_k4t1o")
+
+[node name="enemyanimplayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pa3ux")
+}
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(11, 2)
+target_position = Vector2(8, 0)
+collision_mask = 2
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_tffgq")
+
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

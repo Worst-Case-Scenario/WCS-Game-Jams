@@ -1,0 +1,172 @@
+[gd_scene load_steps=19 format=3 uid="uid://bypueqemr7hty"]
+
+[ext_resource type="Script" path="res://Scripts/station_enemy.gd" id="1_eqwn8"]
+[ext_resource type="Texture2D" uid="uid://r4dimfhqh1dr" path="res://Sprites/mon4_sprite_base.png" id="2_y8cyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6ljo"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfiji"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16aa7"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu66e"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moomd"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qicb"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r83vo"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb6a8"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m857"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf8lx"]
+atlas = ExtResource("2_y8cyt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7wgur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6ljo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfiji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16aa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu66e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moomd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qicb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r83vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb6a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m857")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf8lx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5il6k"]
+size = Vector2(30, 36)
+
+[sub_resource type="Animation" id="Animation_vo3i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("enemyanim:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+
+[sub_resource type="Animation" id="Animation_pl7ci"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hit"
+}, {
+"args": [],
+"method": &"end_of_hit"
+}, {
+"args": [],
+"method": &"start_walk"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pa3ux"]
+_data = {
+"RESET": SubResource("Animation_vo3i4"),
+"attack": SubResource("Animation_pl7ci")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cr6q3"]
+radius = 157.156
+
+[node name="station_enem" type="CharacterBody2D"]
+position = Vector2(408, 100)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_eqwn8")
+
+[node name="enemyanim" type="AnimatedSprite2D" parent="."]
+position = Vector2(6.24999, -0.250001)
+sprite_frames = SubResource("SpriteFrames_7wgur")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_5il6k")
+
+[node name="enemyanimplayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pa3ux")
+}
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 4
+monitorable = false
+
+[node name="coldec" type="CollisionShape2D" parent="PlayerDetector"]
+light_mask = 4
+position = Vector2(6, 7)
+shape = SubResource("CircleShape2D_cr6q3")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-11, 2)
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

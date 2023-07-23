@@ -17,7 +17,7 @@ func move_character():
 	move_and_slide()
 
 func detect_turn_around():
-	if not $GroundDetector.is_colliding() and is_on_floor():
+	if (not $GroundDetector.is_colliding() and is_on_floor()) or $WallDetector.is_colliding():
 		is_moving_left = !is_moving_left
 		scale.x = -scale.x
 
@@ -31,7 +31,6 @@ func _physics_process(delta):
 		$enemyanim.play("idle")
 	if $AttackDetector.is_colliding():
 		print("hit2")
-		get_tree().reload_current_scene()
 	move_character()
 	detect_turn_around()
 	

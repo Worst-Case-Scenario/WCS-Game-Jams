@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbyxn6fs61ajs"]
+[gd_scene load_steps=12 format=3 uid="uid://cbyxn6fs61ajs"]
 
+[ext_resource type="PackedScene" uid="uid://bg81boq7epx4p" path="res://Objects/melee_enem.tscn" id="1_mc0ao"]
 [ext_resource type="PackedScene" uid="uid://coo8q06c1ufpp" path="res://Scene/player.tscn" id="1_r530m"]
 [ext_resource type="Texture2D" uid="uid://djl0p6e6j8f7f" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-bg.png" id="1_xywdn"]
 [ext_resource type="Texture2D" uid="uid://bvhnrwnn3nm15" path="res://Sprites/Tiles/Tiles.png" id="2_tit6s"]
 [ext_resource type="Texture2D" uid="uid://b8ml5dpdvtq8s" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-close-trees.png" id="2_ucu0y"]
+[ext_resource type="PackedScene" uid="uid://cu8kx62d4h0n2" path="res://Objects/flying_enemy.tscn" id="2_x41um"]
 [ext_resource type="Texture2D" uid="uid://4vdnihkf0rvd" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-far-trees.png" id="3_8x4i6"]
 [ext_resource type="Texture2D" uid="uid://b0ftvrkrvf6tu" path="res://Sprites/Background/parallax_demon_woods_pack/layers/parallax-demon-woods-mid-trees.png" id="4_tavya"]
+[ext_resource type="PackedScene" uid="uid://bypueqemr7hty" path="res://Objects/station_enem.tscn" id="6_qyhva"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfx3t"]
 texture = ExtResource("2_tit6s")
@@ -283,10 +286,16 @@ texture = ExtResource("2_tit6s")
 11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_8fbnm"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_rfx3t")
 
 [node name="World" type="Node2D"]
+
+[node name="melee_enem" parent="." instance=ExtResource("1_mc0ao")]
+position = Vector2(177, 142)
+
+[node name="flying_enemy" parent="." instance=ExtResource("2_x41um")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -320,6 +329,9 @@ motion_mirroring = Vector2(592, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(296, 96)
 texture = ExtResource("4_tavya")
+
+[node name="station_enem" parent="." instance=ExtResource("6_qyhva")]
+position = Vector2(365, 151)
 
 [node name="Player" parent="." instance=ExtResource("1_r530m")]
 position = Vector2(32, 160)
