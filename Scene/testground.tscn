@@ -271,7 +271,7 @@ animations = [{
 size = Vector2(30, 36)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cr6q3"]
-radius = 91.2688
+radius = 157.156
 
 [node name="World" type="Node2D"]
 
@@ -366,4 +366,38 @@ shape = SubResource("CircleShape2D_cr6q3")
 [node name="Marker2D" type="Marker2D" parent="station_enem"]
 position = Vector2(-11, 2)
 
+[node name="flying_enemy" type="CharacterBody2D" parent="."]
+position = Vector2(-122, 35)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("4_55442")
+
+[node name="enemyanim" type="AnimatedSprite2D" parent="flying_enemy"]
+position = Vector2(6.24999, -0.250001)
+sprite_frames = SubResource("SpriteFrames_7wgur")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flying_enemy"]
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_5il6k")
+
+[node name="enemyanimplayer" type="AnimationPlayer" parent="flying_enemy"]
+libraries = {
+"": SubResource("AnimationLibrary_pa3ux")
+}
+
+[node name="PlayerDetector" type="Area2D" parent="flying_enemy"]
+collision_layer = 4
+monitorable = false
+
+[node name="coldec" type="CollisionShape2D" parent="flying_enemy/PlayerDetector"]
+light_mask = 4
+position = Vector2(6, 7)
+shape = SubResource("CircleShape2D_cr6q3")
+
+[node name="Marker2D" type="Marker2D" parent="flying_enemy"]
+position = Vector2(-11, 2)
+
 [connection signal="body_entered" from="station_enem/PlayerDetector" to="station_enem" method="_on_player_detector_body_entered"]
+[connection signal="body_entered" from="flying_enemy/PlayerDetector" to="flying_enemy" method="_on_player_detector_body_entered"]
