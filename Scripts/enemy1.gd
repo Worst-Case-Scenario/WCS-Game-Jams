@@ -17,27 +17,32 @@ func move_character():
 	move_and_slide()
 
 func detect_turn_around():
-	if not $RayCast2D.is_colliding() and is_on_floor():
+	if not $GroundDetector.is_colliding() and is_on_floor():
 		is_moving_left = !is_moving_left
 		scale.x = -scale.x
 
 func _physics_process(delta):
-	if $enemyanim.animation == "jump":
+	if $enemyanimplayer.current_animation == "attack":
+		
 		return
-	if $PlayerDetector.body_entered:
-		$enemyanim.play("jump")
-	if $AttackDetector.body_entered:
+	if $PlayerDetector.is_colliding():
+		print("hit2")
+		$enemyanimplayer.play("attack")
+		$enemyanim.play("idle")
+	if $AttackDetector.is_colliding():
+		
 		get_tree().reload_current_scene()
 	move_character()
 	detect_turn_around()
 	
 func hit():
-	$AttackDetector.monitoring = true
+	$AttackDetector.enabled = true
 
 func end_of_hit():
-	$AttackDetector.monitoring = false
+	$AttackDetector.enabled = false
 	
 func start_walk():
+	
 	$enemyanim.play("moving")
 
 

@@ -1,14 +1,16 @@
-[gd_scene load_steps=26 format=3 uid="uid://cc0lw4q22rd2n"]
+[gd_scene load_steps=43 format=3 uid="uid://cc0lw4q22rd2n"]
 
 [ext_resource type="PackedScene" uid="uid://coo8q06c1ufpp" path="res://Scene/player.tscn" id="1_x18dr"]
 [ext_resource type="Script" path="res://Scripts/enemy1.gd" id="2_rpdp1"]
 [ext_resource type="Texture2D" uid="uid://d8p84p6qcnli" path="res://Sprites/AnimationSheet_Character.png" id="3_drq2q"]
+[ext_resource type="Script" path="res://Scripts/station_enemy.gd" id="4_55442"]
+[ext_resource type="Texture2D" uid="uid://r4dimfhqh1dr" path="res://Sprites/mon4_sprite_base.png" id="5_8v0so"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_kfj5v"]
 size = Vector2(1000, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfoqm"]
-size = Vector2(318, 12)
+size = Vector2(680.275, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fm5fv"]
 atlas = ExtResource("3_drq2q")
@@ -150,78 +152,218 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4t1o"]
 size = Vector2(32, 22)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sgxg"]
-size = Vector2(16.5625, 25.0313)
+[sub_resource type="Animation" id="Animation_vo3i4"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_pl7ci"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hit"
+}, {
+"args": [],
+"method": &"end_of_hit"
+}, {
+"args": [],
+"method": &"start_walk"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pa3ux"]
+_data = {
+"RESET": SubResource("Animation_vo3i4"),
+"attack": SubResource("Animation_pl7ci")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6ljo"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfiji"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16aa7"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu66e"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moomd"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qicb"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r83vo"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb6a8"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m857"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf8lx"]
+atlas = ExtResource("5_8v0so")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7wgur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6ljo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfiji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16aa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu66e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moomd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qicb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r83vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb6a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m857")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf8lx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5il6k"]
+size = Vector2(30, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cr6q3"]
+radius = 91.2688
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_x18dr")]
-position = Vector2(163, 51)
+position = Vector2(83, 105)
+collision_mask = 2
+jump_force = 300
 
 [node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2(406, 124)
-collision_layer = 3
-collision_mask = 3
+position = Vector2(203, 80)
+scale = Vector2(1.00264, 1.03497)
+collision_layer = 2
+collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-246.25, 49)
-scale = Vector2(0.3185, 0.12)
+position = Vector2(-65.1127, 49)
+scale = Vector2(0.680775, 0.12)
 mesh = SubResource("QuadMesh_kfj5v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(-246, 49)
+position = Vector2(-64.8627, 49)
 shape = SubResource("RectangleShape2D_kfoqm")
 metadata/_edit_group_ = true
 
-[node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(633, 66)
-collision_layer = 3
-collision_mask = 3
-metadata/_edit_group_ = true
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(-246.25, 49)
-scale = Vector2(0.3185, 0.12)
-mesh = SubResource("QuadMesh_kfj5v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
-position = Vector2(-246, 49)
-shape = SubResource("RectangleShape2D_kfoqm")
-metadata/_edit_group_ = true
-
-[node name="enemy1" type="CharacterBody2D" parent="."]
-position = Vector2(316, 94)
+[node name="melee_enem" type="CharacterBody2D" parent="."]
+position = Vector2(261, 108)
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("2_rpdp1")
 
-[node name="enemyanim" type="AnimatedSprite2D" parent="enemy1"]
+[node name="enemyanim" type="AnimatedSprite2D" parent="melee_enem"]
 position = Vector2(1.5, -0.5)
 scale = Vector2(1.59375, 0.71875)
 sprite_frames = SubResource("SpriteFrames_em0as")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="melee_enem"]
 position = Vector2(2.00003, 2)
 shape = SubResource("RectangleShape2D_k4t1o")
 
-[node name="RayCast2D" type="RayCast2D" parent="enemy1"]
+[node name="enemyanimplayer" type="AnimationPlayer" parent="melee_enem"]
+libraries = {
+"": SubResource("AnimationLibrary_pa3ux")
+}
+
+[node name="GroundDetector" type="RayCast2D" parent="melee_enem"]
 position = Vector2(-19, -11)
 target_position = Vector2(-3.05176e-05, 36)
 collision_mask = 2
 
-[node name="PlayerDetector" type="Area2D" parent="enemy1"]
+[node name="PlayerDetector" type="RayCast2D" parent="melee_enem"]
+position = Vector2(-19, 2)
+target_position = Vector2(-22, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy1/PlayerDetector"]
-position = Vector2(-29, 0)
-shape = SubResource("RectangleShape2D_4sgxg")
+[node name="AttackDetector" type="RayCast2D" parent="melee_enem"]
+position = Vector2(-19, 2)
+target_position = Vector2(-16, 0)
 
-[node name="AttackDetector" type="Area2D" parent="enemy1"]
-monitoring = false
+[node name="station_enem" type="CharacterBody2D" parent="."]
+position = Vector2(408, 100)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("4_55442")
+
+[node name="enemyanim" type="AnimatedSprite2D" parent="station_enem"]
+position = Vector2(6.24999, -0.250001)
+sprite_frames = SubResource("SpriteFrames_7wgur")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="station_enem"]
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_5il6k")
+
+[node name="enemyanimplayer" type="AnimationPlayer" parent="station_enem"]
+libraries = {
+"": SubResource("AnimationLibrary_pa3ux")
+}
+
+[node name="PlayerDetector" type="Area2D" parent="station_enem"]
+collision_layer = 4
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy1/AttackDetector"]
-position = Vector2(-29, -1)
-shape = SubResource("RectangleShape2D_4sgxg")
+[node name="coldec" type="CollisionShape2D" parent="station_enem/PlayerDetector"]
+light_mask = 4
+position = Vector2(6, 7)
+shape = SubResource("CircleShape2D_cr6q3")
+
+[node name="Marker2D" type="Marker2D" parent="station_enem"]
+position = Vector2(-11, 2)
+
+[connection signal="body_entered" from="station_enem/PlayerDetector" to="station_enem" method="_on_player_detector_body_entered"]
