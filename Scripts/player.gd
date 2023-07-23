@@ -17,7 +17,7 @@ func _physics_process(delta):
 	else:
 		current_jump = 0
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("up"):
 		if current_jump < max_jump:
 			velocity.y = -jump_force
 			current_jump += 1
@@ -25,14 +25,18 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("accept"):
 		shoot()
-	var horizontal_direction = Input.get_axis("move_left","move_right")
+	var horizontal_direction = Input.get_axis("left","right")
 	velocity.x = speed * horizontal_direction
 	move_and_slide()
 	
 	if velocity.y < 0:
 		animSprite.play("jump")
+	elif velocity.x !=0:
+		animSprite.play("moving")
 	else:
 		animSprite.play("idle")
+		
+
 	if Input.is_action_pressed("left") and !is_moving_left:
 		is_moving_left = true
 		moving = "left"
@@ -41,6 +45,8 @@ func _physics_process(delta):
 		is_moving_left = false
 		moving = "right"
 		scale.x = -scale.x
+	
+	
 	
 	
 func shoot():
